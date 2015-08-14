@@ -253,12 +253,6 @@
         CGContextSetFillColorWithColor(context, fillColor.CGColor);
         CGContextFillPath(context);
     }
-    
-    CGContextSetStrokeColorWithColor(context, strokeColor.CGColor);
-    path.lineWidth = _borderWidth*2;
-    path.lineCapStyle = kCGLineCapRound;
-    path.lineJoinStyle = kCGLineJoinRound;
-//    [path stroke];
 }
 
 @end
