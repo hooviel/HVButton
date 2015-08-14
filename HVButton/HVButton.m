@@ -63,25 +63,11 @@
 
 - (void)initSetup
 {
-    _borderWidth = 0;
-    _borderColor = [UIColor clearColor];
     _corner = 0;
     _cornerRadius = 4;
 }
 
 #pragma mark - public
-- (void)setBorderColor:(UIColor *)borderColor
-{
-    _borderColor = borderColor;
-    [self setNeedsDisplay];
-}
-
-- (void)setBorderWidth:(CGFloat)borderWidth
-{
-    _borderWidth = borderWidth;
-    [self setNeedsDisplay];
-}
-
 - (void)setCorner:(UIRectCorner)corner
 {
     _corner = corner;
@@ -219,7 +205,6 @@
     NSLog(@"%s, %zd", __FUNCTION__, self.state);
     UIColor *fillColor = [self backgroundColorForState:self.state];
     HVGradientColor *gradientColor = [self gradientColorForState:self.state];
-    UIColor *strokeColor = _borderColor?:[UIColor clearColor];
     
     CGContextRef context = UIGraphicsGetCurrentContext();
     

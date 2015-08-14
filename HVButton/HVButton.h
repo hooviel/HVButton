@@ -44,14 +44,6 @@ typedef NS_ENUM(NSInteger, HVGradientDirection){
 @interface HVButton : UIButton
 
 /**
- *  边框色，默认[UIColor clearColor]
- */
-@property (nonatomic, strong) UIColor *borderColor;
-/**
- *  边框宽，默认0，无边框
- */
-@property (nonatomic, assign) CGFloat borderWidth;
-/**
  *  圆角，默认0，无圆角
  */
 @property (nonatomic, assign) UIRectCorner corner;
