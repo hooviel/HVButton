@@ -63,11 +63,25 @@
 
 - (void)initSetup
 {
-    _corner = 0;
-    _cornerRadius = 4;
+    _borderWidth = 0;
+    _borderColor = nil;
+    _corner = UIRectCornerAllCorners;
+    _cornerRadius = 0;
 }
 
 #pragma mark - public
+- (void)setBorderWidth:(CGFloat)borderWidth
+{
+    _borderWidth = borderWidth;
+    [self setNeedsDisplay];
+}
+
+- (void)setBorderColor:(UIColor *)borderColor
+{
+    _borderColor = borderColor;
+    [self setNeedsDisplay];
+}
+
 - (void)setCorner:(UIRectCorner)corner
 {
     _corner = corner;
@@ -123,7 +137,7 @@
         
         if (bgColor) break;
         
-//        bgColor = [UIColor clearColor];
+        //        bgColor = [UIColor clearColor];
     } while (NO);
     
     return bgColor;
@@ -172,7 +186,7 @@
         
         if (gradientColor) break;
         
-//        gradientColor = [HVGradientColor gradientColorWithColors:@[[UIColor clearColor], [UIColor clearColor]]];
+        //        gradientColor = [HVGradientColor gradientColorWithColors:@[[UIColor clearColor], [UIColor clearColor]]];
     } while (NO);
     
     return gradientColor;
@@ -237,6 +251,15 @@
         
         CGContextSetFillColorWithColor(context, fillColor.CGColor);
         CGContextFillPath(context);
+    }
+    
+    if (_borderWidth>0 && _borderColor) {
+        UIBezierPath *borderpath = [UIBezierPath bezierPathWithRoundedRect:CGRectInset(rect, _borderWidth*0.5, _borderWidth*0.5) byRoundingCorners:_corner cornerRadii:CGSizeMake(_cornerRadius, _cornerRadius)];
+        CGContextAddPath(context, borderpath.CGPath);
+        CGContextSetStrokeColorWithColor(context, _borderColor.CGColor);
+        CGContextSetLineWidth(context, _borderWidth);
+        CGContextSetLineCap(context, kCGLineCapSquare);
+        CGContextStrokePath(context);
     }
 }
 
