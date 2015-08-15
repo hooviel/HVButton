@@ -16,7 +16,7 @@ btn.frame = CGRectMake(50, 100, 120, 50);
 
 ###设置按钮指定状态的渐变背景，优先级大于纯色背景
 ```objc
-// 2、设置 UIControlStateNormal 状态渐变背景，渐变背景优先级大于纯色背景，所以，UIControlStateNormal 下回显示渐变色背景
+// 2、设置 UIControlStateNormal 状态渐变背景，渐变背景优先级大于纯色背景，所以，UIControlStateNormal 下会显示渐变色背景，而不是纯色背景
 [btn setGradientColor:[HVGradientColor gradientColorWithColors:@[[UIColor colorWithRGBValue:0xff4567],
                                                                  [UIColor colorWithRGBValue:0xaa4567]]]
              forState:UIControlStateNormal];
